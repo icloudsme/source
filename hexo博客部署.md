@@ -1,0 +1,68 @@
+###部署hexo博客
+
+    npm install -g hexo 安装hexo
+    npm install安装博客
+    hexo init初始化
+
+hexo g 生成
+hexo d部署
+hexo clean 清理
+hexo s启动
+
+####主题安装
+next主题安装
+>cd your-hexo-site
+git clone https://github.com/iissnan/hexo-theme-next themes/next
+
+####启动next主题
+克隆/下载 完成后，打开 站点配置文件，找到 theme 字段，并将其值更改为 next
+
+####验证主题是否启用
+运行 hexo s --debug，并访问 http://localhost:4000，确保站点正确运行
+
+####主题设定
+选择scheme
+Next通过scheme提供主题中的主体。`Mist`是Nextde第一款scheme，启用mist仅需在主题配置文件中将`#scheme： Mist`前面的#注释去掉即可
+
+#### 语言设置
+编辑站点配置文件,将`language`设置成你所需要的语言
+例如选用整体中文,则配置为:
+>language: zh-Hans    
+
+可用的语言如以下表格所示：
+|语言     |            代码  			|     设定值      |
+| :---------		|: 		:|:---------:|
+|English       |`en`				                |`language: en` |
+|简体中文			|
+
+| Col1      |     Col2 |   Col3   |
+| :-------- | ---- --- -:| :------: |
+| field1    |   field2 |  field3  |
+
+| Col1      |     Col2 |   Col3   |
+| :-------- | :--------| :------: |
+| field111111111    |   field211|  field3  |
+
+
+| Tables        | Are             				                       | Cool                           |
+|:::: -------------: |:--------------------------------::::| ------------------------::::|
+| col 3 is      | right-alig              | $1600 |
+| col 2 is      | centered    						    |   $12 |
+| zebra stripes | are neat         			 |    $1 |
+
+
+<th width="60">222</th>
+dog | <th width="80">				</th>           | cat
+----|:----------------:|----
+foo | foo            | foo
+bar | bar            | bar
+baz | baz            | baz
+
+
+*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
