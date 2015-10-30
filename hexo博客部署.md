@@ -1,6 +1,6 @@
-title: hexo博客部署
-date: 2015/10/30
-categories: hexo
+title: hexo博客部署  
+date: 2015/10/30  
+categories: hexo  
 
 
 ###部署hexo博客
