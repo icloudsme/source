@@ -1,0 +1,21 @@
+---
+title: python2与3 
+tags: python2,python3
+grammar_cjkRuby: true
+---
+
+
+python2与python3的区别
+
+````python   
+    python2:
+    print "hello world"
+    python3:
+    print ("hello world")
+````
+
+python3在也不用为编码烦躁了
+
+1/2终于等于0.5了
+
+print "hello world"
