@@ -10,7 +10,7 @@ photos:
 
 
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过==设置==里的修改模板来改变新建文章的内容。
-1. **python3**
+### **python3**
 ````python
     chmod +x 给执行权限
     linux
@@ -23,7 +23,7 @@ photos:
     print an 这就是调用变量 id(a),id(b）可以看内存地址变化
 ````
 
-2. **变量起名**
+### **变量起名**
     1. 显式
     2. nums_of_alex_gf =19 下划线
     3. NumsOfAlexGf =2 驼峰
@@ -33,7 +33,12 @@ photos:
     7. 变量名只能是字符数字下划线的任意组合
     8. 关键字不能声明
     9. name of teacher =不能有空格
-3. **用户交互**
+### **用户交互**
     1. `name=input("input your name")`
     2. `python3用input`  `python2里用raw_input`
-    3. python2中的input相当于python3中的eval（）
+    3. python2中的input相当于python3中的eval()
+````python
+name = input("Please your name:")
+print("You name is :%s"% name)
+### **else if和缩进**
+    1.
