@@ -41,7 +41,7 @@ photos:
 name = input("Please your name:")
 print("You name is :%s"% name)
 ````
-### **else if和缩进**
+### **else if，elif和缩进**
 ````python
 sex = input("Please input your gender:")
 # ==是判断，=号是变量 python是通过缩进来决定代码块
