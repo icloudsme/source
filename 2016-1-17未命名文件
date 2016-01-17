@@ -1,0 +1,17 @@
+---
+title: 2016-1-17未命名文件 
+Date: 2016-1-17
+tags: [tag1,tag2,tag3]
+layout: photo
+photos:
+- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg
+- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg
+---
+
+
+欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过==设置==里的修改模板来改变新建文章的内容。
+
+chmod +x 给执行权限
+linux
+#!/usr/bin/python
+#!/usr/bin/env python
