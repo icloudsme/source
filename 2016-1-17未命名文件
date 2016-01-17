@@ -44,7 +44,7 @@ print("You name is :%s"% name)
 ### **else if和缩进**
 ````python
 sex = input("Please input your gender:")
-# ==是判断，=号是变量
+# ==是判断，=号是变量 python是通过缩进来决定代码块
 if sex == "girl":
     print("I would like to have a little monkeying")
 elif sex == "man":
