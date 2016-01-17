@@ -10,8 +10,27 @@ photos:
 
 
 欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过==设置==里的修改模板来改变新建文章的内容。
+1. python3
+   
 
-chmod +x 给执行权限
-linux
-#!/usr/bin/python
-#!/usr/bin/env python
+>  chmod +x 给执行权限
+>     linux
+>     #!/usr/bin/python
+>     #!/usr/bin/env python
+>     name="hello"加引号是字符串
+>     name=hello如果不加引号就是变量，打印就会报错，未定义
+>     name="hello"
+>     an =name
+>     print an 这就是调用变量
+> id(a),id(b）可以看内存地址变化
+
+2. 变量起名
+    1. 显式
+    2. nums_of_alex_gf =19 下划线
+    3. NumsOfAlexGf =2 驼峰
+    4. names-of-alex-gf =22 不合法
+    5. 5name = 数字不能开头，可以na5me=
+    6. !name 特殊字符不能有。！～&
+    7. 变量名只能是字符数字下划线的任意组合
+    8. 关键字不能声明
+    9. 
