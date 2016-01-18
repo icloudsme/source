@@ -1,21 +1,86 @@
 ---
-title: python2与3 
+title: python学习之多级菜单显示城市详细信息
 tags: python2,python3
 grammar_cjkRuby: true
 ---
 
 
-python2与python3的区别
+----------
+### 1. 整个案例运用到的知识点
 
-````python   
-    python2:
-    print "hello world"
-    python3:
-    print ("hello world")
+ 1. python数据结构之字典的使用，字典嵌套字典，字典嵌套列表
+ 2. python数据结构之列表的使用，字典嵌套列表 
+ 3. python数据结构之字符串的使用，字符串的格式化 while True死循环的使用
+ 4. if...else....语句的使用
+
+ 
+### 2. 案例设计核心思想
+
+ 1. 将城市信息存储在字典+列表的数据结构里面里面
+ 2. 将省、市、先设置成三级菜单
+ 3. 按照用户的选择可依次选择进入各子菜单
+
+### 3. 代码
+````python
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+"""
+message_dict = {
+    "四川":{"广安":["武胜","岳池","邻水"],"广元":["旺苍","苍溪","广元市区"]},
+    "北京":{"海淀":["中关村","五道口","上地"],"朝阳":["常营","国贸","管庄"]}
+}
+ 
+print message_dict.keys()
+ 
+"""
+#使用字典和列表村村省、市、城镇等信息
+message_dict = {
+    "sichuan":{
+        "guangan":["wusheng","yuechi","linshui"],
+        "guangyuan":["wangcang","cangxi"]
+    },
+    "beijing":{
+        "chaoyang":["changying","guanzhuang","guomao"],
+        "haidian":["zhongguancun","wudaokou","shangdi"]
+    }
+}
+ 
+#打印显示所有的省份
+for i in range(len(message_dict.keys())):
+    new_item1 = "%s:%s" %(i+1,message_dict.keys()[i])
+    print new_item1
+ 
+#要求用户选择要查看的的省份下面有哪些市区，并保证用户输入正确的省份
+provence = raw_input("plz input select province:")
+while True:
+    if provence not in message_dict.keys():
+        print "plz input correct!!!"
+        provence = raw_input("plz input select province again:")
+    else:
+        break
+message_dict1 = message_dict[provence]
+ 
+#显示对应省份的所有市区的信息
+for j in range(len(message_dict1)):
+    new_item2 = "%s:%s" %(j+1,message_dict1.keys()[j])
+    print new_item2
+ 
+ 
+#要求用户输入要查看的市区的有哪些城镇，并保证用户输入正确
+city = raw_input("plz select city:")
+while True:
+    if city not in message_dict1.keys():
+        print "plz input correct!!!"
+        city = raw_input("plz select city again:")
+    else:
+        break
+message_list2 = message_dict1[city]
+#打印用户所要查看的市区的的所有城镇
+for k in range(len(message_list2)):
+    new_item3 = "%s:%s" %(k+1,message_list2[k])
+    print new_item3
 ````
 
-python3在也不用为编码烦躁了
 
-1/2终于等于0.5了
-
-print "hello world"
+   
+   
