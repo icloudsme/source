@@ -1,5 +1,5 @@
 ---
-title: python3 day1学习笔记
+title: python3基础学习笔记
 Date: 2016-1-17
 tags: [python,基础]
 layout: photo
@@ -106,3 +106,68 @@ while lucky_num != num:
 print("恭喜你才对了%s！Bingo" % num)
 ````
 
+### 给循环加上限制
+````python
+# coding=utf-8
+# /usr/bin/env python
+
+lucky_num = 19
+input_num = -1
+
+guess_count = 0
+
+# 加上次数限制
+while guess_count < 3:
+    input_num = int(input("Input the guess num:"))
+    if input_num > lucky_num:
+        print("the real numer is smaller.")
+    elif input_num < lucky_num:
+        print("the real numer is bigger..")
+    else:
+        print("bingo")
+        break
+    guess_count += 1
+else:
+    print("猜错了")
+````
+### for循环
+````python
+lucky_num = 19
+input_num = -1
+
+
+
+for i in range(3):
+    input_num = int(input("Input the guess num:"))
+    if input_num > lucky_num:
+        print("the real numer is smaller.")
+    elif input_num < lucky_num:
+        print("the real numer is bigger..")
+    else:
+        print("bingo")
+        break
+else:
+    print("猜错了")
+````
+### 格式化输出
+````python
+# /usr/bin/env python
+# coding=utf-8
+
+name = input("name")
+age = input("age")
+job = input("job")
+
+print("information of %s:\n name:%s\n age:%s\n job:%s" % (name, name, age, job))
+````
+
+
+### 列表
+````python
+name_list = ["alex","brother","tenglan"]
+name_list[1]
+enumerate(name_list)
+输出：brother
+列表从0开始
+查看list有什么方法
+help(name_list)  
