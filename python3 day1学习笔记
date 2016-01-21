@@ -9,20 +9,20 @@ photos:
 ---
 
 
-### **python3**
+### 1. python3基础
 ````python
-    chmod +x 给执行权限
-    linux
     #!/usr/bin/python
     #!/usr/bin/env python
     name="hello"加引号是字符串
     name=hello如果不加引号就是变量，打印就会报错，未定义
-    name="hello"
-    an =name
-    print an 这就是调用变量 id(a),id(b）可以看内存地址变化
+
+    a = 2
+    b = a
+    a = 3
+    这就是调用变量 id(a),id(b）可以看内存地址变化
 ````
 
-### **变量起名**
+### 2. 变量起名
     1. 显式
     2. nums_of_alex_gf =19 下划线
     3. NumsOfAlexGf =2 驼峰
@@ -32,7 +32,7 @@ photos:
     7. 变量名只能是字符数字下划线的任意组合
     8. 关键字不能声明
     9. name of teacher =不能有空格
-### **用户交互**
+### 3. 用户交互
     1. `name=input("input your name")`
     2. `python3用input`  `python2里用raw_input`
     3. python2中的input相当于python3中的eval()
@@ -40,7 +40,7 @@ photos:
 name = input("Please your name:")
 print("You name is :%s"% name)
 ````
-### **else if，elif和缩进**
+### 4. else if，elif和缩进
 ````python
 sex = input("Please input your gender:")
 # ==是判断，=号是变量 python是通过缩进来决定代码块
@@ -50,10 +50,7 @@ elif sex == "man":
     print("Going to homosexual!...")
 else:
     print("Pervert!")
-````
 
-
-````python
     # 猜lucky number， n =6
     # 猜的数字比6大，提示你打印小一点
     # 猜的数字比6小，提示你打印大一点
@@ -61,7 +58,7 @@ else:
     # python3.x以后，input返回的是字符串，执行强制类型转换int(input())
     # 只要猜不对，就一直猜，直到猜对为止使用while True，true是真
     # 猜对了就结束判断，添加break
-    # 第一种写法
+#  第一种写法
 lucky_num = 6
 while True:
     num = int(input("Please input lucky number:"))
@@ -106,7 +103,7 @@ while lucky_num != num:
 print("恭喜你才对了%s！Bingo" % num)
 ````
 
-### 给循环加上限制
+### 5.  给循环加上限制
 ````python
 # coding=utf-8
 # /usr/bin/env python
@@ -130,7 +127,7 @@ while guess_count < 3:
 else:
     print("猜错了")
 ````
-### for循环
+### 6.  for循环
 ````python
 lucky_num = 19
 input_num = -1
@@ -149,7 +146,23 @@ for i in range(3):
 else:
     print("猜错了")
 ````
-### 格式化输出
+### 7.  嵌套循环
+````python
+# /usr/bin/env python
+# -*-coding:utf-8 -*-
+
+for j in range(5):
+    for i in range(10):
+        if i < 5:
+            continue
+            # 如果小于5，就跳出本次循环
+        if j > 3:
+            # 大于3就结束打印i
+            break
+        print(i)
+````
+
+### 8.  格式化输出
 ````python
 # /usr/bin/env python
 # coding=utf-8
@@ -159,10 +172,39 @@ age = input("age")
 job = input("job")
 
 print("information of %s:\n name:%s\n age:%s\n job:%s" % (name, name, age, job))
+
+# /usr/bin/env python
+# coding=utf-8
+
+name = input("name").strip()  # 去掉空格strip()
+age = input("age").strip()
+job = input("job").strip()
+# 第一种格式化输出
+print("information of %s:\n name:%s\n age:%s\n job:%s" % (name, name, age, job))
+
+# 第二种使用+连接起来输出
+name = input("name:")
+age = input("age:")
+job = input("job:")
+print("information of []:" + name + "\n name:[]" + name + "\n age:[]" + age + "\n job:[]" + job)
+
+# 第三种多行输出
+msg = '''
+information of %s:
+    name:%s
+    age:%s
+    job:%s
+''' % (name, name, age, job)
+print("information of %s:\n name:%s\n age:%s\n job:%s" % (name, name, age, job))
+
+# %s  代表字符串
+# %f  代表浮点
+# %d 代表整型
+
 ````
 
 
-### 列表
+### 9.  列表
 ````python
 name_list = ["alex","brother","tenglan"]
 name_list[1]
@@ -171,3 +213,154 @@ enumerate(name_list)
 列表从0开始
 查看list有什么方法
 help(name_list)  
+-----------------
+
+列表的其他操作
+# /usr/bin/env python
+# coding=utf-8
+
+
+# 列表 切片取值
+name_list = ['alex', 'brother', 'tenglan']
+print(name_list[1])
+# 输出 brother取值
+enumerate(name_list)
+# help(name_list)
+# 查看有什么方法
+name_list.append("tenglan")
+print(name_list)
+# index 索引
+print(name_list.index("alex"))
+# count统计
+print(name_list.count("tenglian"))
+# 指定位置插入和值
+name_list.insert(2, "88")
+print(name_list)
+# pop删除最后一个
+name_list.pop()
+print(name_list) \
+    # remove指定删除，要指定值
+name_list.remove('88')
+print(name_list)
+# 反转排序
+name_list.reverse()
+print(name_list)
+# 排序sort
+name_list.sort()
+print(name_list)
+name_list.append("hi")
+name_list.append("bs")
+name_list.sort()
+print(name_list)
+# 循环遍历删除
+for i in range(name_list.count('alex')):
+    name_list.remove("alex")
+    print(name_list)
+# 切片
+a = [1, 2, 3, 'a', 'b']
+# 切除1-2的要定位到3
+print(a[0:3])
+a.insert(2, 4)
+print(a)
+a.insert(5, 5)
+print(a)
+print(a[0:2])
+b = [1, 2, 3, 'a', 'b']
+# 去最后一个
+print(b[-1])
+# 取前三个
+print(b[0:3])
+# 取最后两个
+print(b[-2:])
+c = b[0:3]
+print(c)
+
+# 扩展
+print(a + b + c)
+# 或者a.extend(b)
+print(a.extend(b))
+name = "shen"
+a.extend(name_list)
+# 强大的扩展
+print(a.extend(name))
+# 判断是否在列表里
+print('bs' in a)
+
+# 元祖
+t = (1, 2, 3, 4)
+# 元祖转换列表
+print(list(t))
+````
+### 10. 文件操作
+````python
+# /usr/bin/env python
+# -*-coding:utf-8-*-
+
+# 打开文件
+# file_obj = file("文件路径"，"模式")
+# 3.x打开的方式
+# file_obj = open("文件路径","模式")
+
+# 打开文件的模式
+# r以只读方式打开
+# w打开一个文件只用与写入，如果该文件已存在则将其覆盖，如果该文件不存在就创建新文件
+# a打开一个文件用于追加,如果该文件已存在,文件指针将会放在文件的结尾,也就是说,如果该文件在不存在,创建新文件进行写入
+# w+打开一个文件用于写入,如果该文件已存在则将其覆盖,如果该文件不存在,创建新文件
+
+
+
+# 读取文件
+# 一次性加载所有内容到内存
+# obj.read()
+# 一次性加载所有内容到内存，并根据行分割成字符串
+# obj.readlines()
+
+# 每次仅读取一行数据
+# for line in obj:
+#     print line
+
+# 写文件的内容
+# obj.write("内容")
+
+# 关闭文件句柄
+# obj.close()
+
+
+
+# 打开文件
+f = open("test.log", "w")
+# write覆盖以前的文件，创建新的文件
+# 写入文件
+f.write("This is the first line\n")
+f.write("This is the second line\n")
+f.write("this is the 3 line\n")
+f.write("this is the 4 line\n")
+f.close()
+
+# 读取文件,模式为r
+f = open('test.log', 'r')
+for line in f:
+    if "5" in line:
+        print("this is the third line")
+    else:
+        print(line),
+f.close()
+
+# 写入文件,用于追加 a模式
+# 写的模式下读取也会报错
+f = open("test.log", "a")
+f.write("hello")
+f.close()
+# 在读取
+f = open("test.log", 'r')
+print(f.read())
+f.close()
+
+# 写读模式
+# 写读会把原来的内容清掉
+f = open("test.log", "w+")
+f.write("new line\n")
+print(f.readline())
+f.close()
+````
+
