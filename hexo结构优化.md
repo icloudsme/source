@@ -1,8 +1,7 @@
 title: hexo结构优化  
 date: 2015/10/30  
-tags: hexo | 多说 
- 
----  
+tags: [hexo,静态博客]
+---
 0x00 Hexo结构优化
 
 http://go.kieran.top/post/1/
