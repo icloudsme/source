@@ -1,0 +1,110 @@
+title: python数据结构常用的方法 
+Date: 2016-1-26
+tags: [列表,字典,对象]
+layout: photo
+photos:
+---
+
+
+字符串格式化
+字符串 %s，整形 %d ，浮点数%f
+
+### 字符串的方法  int
+
+移除空白    strip
+分割        split
+长度        len(obj)
+索引        obj[1]
+切片        obj[1:],obj[1:10]
+
+### 列表 list
+
+创建列表： 
+li =[1,2,3,4,5]
+li =list(1,2,3,4,5)
+列表的方法
+索引  index
+切片    :
+追加    append
+删除    del remove pop
+长度    len
+循环    for  while  （foreach)
+循环中断    break（停止循环）continue（返回循环）pass（占位）return（针对函数和方法，终止）  exit（退出）
+包含    in 'alex' in ['shuaige']
+
+
+
+### 元祖  tuple
+**元祖元素不可修改**
+a = (11,22,33,44)
+**元祖元素的元素可以被修改**
+t1 =(1,2,['k1':'v1')
+t1[0] = 5  #不可以被修改
+t1[2]['k1']=2  #可以被修改
+
+    a =(1,2,{'k1':'v1'})
+    a[2]['v1']= 'hey'
+    a
+    (1, 2, {'v1': 'hey', 'k1': 'v1'
+    a[2]['v1']=2
+    a
+    (1, 2, {'v1': 2, 'k1': 'v1'})
+
+除此之外都是一样的也包括
+索引，切片，循环，长度，包含
+
+### 字典 dict
+**字典是键 值对key：value**
+索引    通过key来找
+新增    d[key] xx
+删除    del d[key]
+键  keys    值 values   键值对  items
+for i in dict.keys   循环键
+for i in dict.values 循环值    
+for i in dict.items  循环键值
+
+循环
+长度
+
+
+### 主文件判断
+1.py __name__==__1__
+lib/3.py  __name__==__lib.3__
+index.py  __name__='__main__' # 函数主文件
+
+
+### 一切事物都是对象，对象基于类创建
+一切事物都是对象，对象是由类创建的
+**对象所有功能都是去方法里找的**
+li =[1,2,3]
+print(type(li)) #  查看是什么类型
+li = list
+在pycharm中 比如查看list有哪些方法，按住c+鼠标左键可以看见list的类
+![enter description here][1]
+![enter description here][2]
+bin 代表二进制bin(18)
+
+### int方法
+age = -19
+age.__abs__() 得出绝对值19
+age.__add__(100) 相加得出81 
+__cmp__()比较大小
+all_item =100
+pager =10
+result = all_item.__divmod__(10)用于页面分页
+print(result) 得出结果9，5  
+age.__eq__()比较是否相等 得出布尔值
+__float__() 转换成浮点型
+age = 5
+age.__floordiv__(6)  # 地板除
+__init__ 自动创建
+2.__pow__(8) 就是2的八次方
+
+### 元祖列表之间转换
+li =[11,22,33]
+tu = tuple(1i)   # 列表转换成元祖
+li = list(tu)   # 转换成列表
+
+
+  [1]: ./images/1453824615057.jpg "1453824615057.jpg"
+  [2]: ./images/1453823052523.jpg "1453823052523.jpg"
