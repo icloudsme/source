@@ -1,0 +1,173 @@
+title: 浅拷贝深拷贝 
+Date: 2016-1-25
+tags: [深拷贝,浅拷贝,切片]
+layout: photo
+photos:
+- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg
+- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg
+---
+
+1
+a=dict
+a={'alex':30,'tenglan':23}
+a['alex']------取出30，一种映射关系
+2
+ items=[('name','alex')]
+ dict(items)
+{'name': 'alex'}
+ d=dict([('name','yuan'),('job','stu')])
+ d = {k:v for (k,v) in zip(['a','b','c'],[1,2,3])}
+ d
+{'a': 1, 'c': 3, 'b': 2}
+
+
+
+切片
+a =[1,2,3]
+b =a[:]
+b
+[1,2,3]
+
+b.append(4)
+b等于[1,2,3,4]
+a等于[1,2,3]
+
+a =[1,2,[3,4]
+b =a[:]
+b也等于a的值
+b[2][0]=12
+输出b[1,2,[12,4]]
+id(a[0]
+498775728
+id(b[0]
+498775728
+他们的结果是一样的
+283461417
+2237036944
+
+import copy
+a =[1,2,[3,4]]
+b =copy.deepcopy(a)
+b输出[1,2,[3,4]]
+b[2][0]=111
+b输出[1,2,[111,4]]
+a输出[1，2，[3,4]]
+深拷贝原来的值不变，会创建新的内存空间
+
+del.clear()清除字典
+del a是删除字典，变量就没有了 
+浅拷贝
+import copy
+a ={'name':'alex','job':'IT','age':23}
+b=copy,copy(a)
+输出b {'name':'alex','job':'IT','age':23}
+a.get('age') 取值
+输出23
+a.get('aaa','bbb')
+输出'bbb'
+
+a.setdefault('aaa','bbb')  赋值给aaa键赋值bbb
+
+a.pop('aaa') 消除值bbb
+
+a.popitem() 随机消除键值
+
+a.update({'age':24}) 和原来的比较，如果没有会把这个字典加进去
+
+a.ipdate({'name':'yuan'})不会更新，会新加一个键值
+
+for i in a.items():
+    print(i)
+输出键对应的值 字典
+
+创建字典
+b ={}
+b.formkeys(['age','name'])
+b.formkeys(['name','age'],'default')
+原来值为none，更改默认值都是default
+
+格式化输出
+a={'name':'alxe','age':23}
+print("%(name)s is age %(age)s"%a)
+
+
+
+选择结构之`if`语句
+**if---else只能执行两种情况**
+(1)if （条件语句）：
+条件语句放的是布尔值，条件语句
+可以通过type(a)查看是true还是false
+else 只能执行if对应的另外一个条件，相同操作的不同结果
+
+（2）if-elif-else
+if(条件表达式）：
+    语句体1
+elif（条件表达式）：
+    语句体2
+elif（条件表达式）：
+    语句体3
+else：
+    语句体
+
+````python    
+a =20
+if a>20:
+    print("太大了")
+elif a<20:
+    print("太小了")
+elif a==20:
+    print("猜对了")
+else:
+    print("输入错误")
+````
+
+````python
+for else循环：
+格式：for  元素变量  in 可迭代对象
+for i in [1,2,'alex']:    # 遍历这个列表
+    print(i)
+    print("ok") 打印3个ok
+
+
+for i in {'name':'alex','age':22}:  
+    print(i)  #打印时取出键  
+    
+a ={'name':'alex','age':22}
+for i,v in a.items():   #i,v对应键，值
+    print(i,v)  #取出键值对应的值
+
+for i in range(3):   #循环次数的迭代器
+    print(i)
+else:
+    print('no')    #上面执行完还会指向else语句块
+
+
+# 第一种退出循环 
+a = 0        
+while a < 3:
+    print('-------')  # 条件为true会一直循环
+    a +=1    #就可以推出循环，否则会一直循环
+else:
+    print('ok')     #执行三次后也会执行ok
+
+# 第二种退出循环
+a =0
+while a<3:
+    print('----')
+    break           # break只能退出循环
+    print('----')
+    
+else:
+    print('aaaa')   
+    
+switch(number)
+
+
+![enter description here][1]
+
+
+![enter description here][2]
+
+
+  [1]: ./images/1453731488363.jpg "1453731488363.jpg"
+  [2]: ./images/1453731445793.jpg "1453731445793.jpg"
