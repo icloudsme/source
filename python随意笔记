@@ -1,0 +1,507 @@
+title: python随意笔记 
+Date: 2016-1-23
+tags: [tag1,tag2,tag3]
+layout: photo
+photos:
+- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg
+- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg
+---
+
+
+欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过==设置==里的修改模板来改变新建文章的内容。
+
+
+在Linux的终端中，搜索当前目录和子目录中含有某关键字的文件，命令如下：
+1.	grep ‘KeyWord’  ./ -Rn  
+1.	卸载软件先查看软件包在系统中的名称
+2.	rpm -q -a
+3.	确定要卸载的软件的名称，就可以开始卸载该软件
+4.	rpm -e [package name]
+5.	rpm -e [package name] -nodeps
+6.	由于系统中各个软件包之间相互有依赖关系，使用-nodeps忽略依赖关系，直接卸载：
+7.	rpm -e [package name] -nodeps
+8.	df -hl 查看磁盘
+top查看cpu 和内存  tasks系统总进程数Cpus使用频率mem内存总量使用量Swap交换分区free查看内存
+curl & wget
+使用curl或wget命令，不用离开终端就可以下载文件。如你用curl，键入curl -O后面跟一个文件路径。wget则不需要任何选项。下载的文件在当前目录。
+mtr
+mtr命令把ping命令和tracepath命令合成了一个。mtr会持续发包，并显示每一跳ping所用的时间。也会显示过程中的任何问题，在下面的示例中，可以看到在第6跳丢了超过20%的包。
+host
+host命令用来做DNS查询。如果命令参数是域名，命令会输出关联的IP；如果命令参数是IP，命令则输出关联的域名
+
+
+
+List列表   tuple元组  dict字典
+
+Python里面如何实现tuple和list的转换？
+答：直接使用tuple和list函数就行了，type()可以判断对象的类型
+
+可以先把list重新排序，然后从list的最后开始扫描，代码如下：if List:
+List.sort()
+last = List[-1]
+for i in range(len(List)-2, -1, -1):
+if last==List[i]: del List[i]
+else: last=List[i]
+ 请写出一段Python代码实现删除一个list里面的重复元素
+1,使用set函数，set(list)
+2，使用字典函数，
+>a=[1,2,4,2,4,5,6,5,7,8,9,0]
+>b={}
+>b=b.fromkeys(a)
+>c=list(b.keys())
+>c
+
+编程用sort进行排序，然后从最后一个元素开始判断
+a=[1,2,4,2,4,5,7,10,5,5,7,8,9,0,3]
+a.sort()
+last=a[-1]
+for i inrange(len(a)-2,-1,-1):
+if last==a[i]:
+del a[i]
+else:last=a[i]
+print(a)
+
+ python代码得到列表list的交集与差集
+交集
+b1=[1,2,3]
+b2=[2,3,4]
+b3 = [val for val in b1if val in b2]
+print b3
+差集
+b1=[1,2,3]
+b2=[2,3,4]
+b3 = [val for val in b1 if val not in b2]
+print b3
+差集实例
+———-
+```#/bin/env python
+# -*- coding:utf-8 -*-
+f =open(‘C:\diff_dealer\excel.txt’)
+excel = f.readlines()
+f.close()
+f= open(‘C:\diff_dealer\db.txt’)
+db = f.readlines()
+diff = [val for val in db if val not in excel]
+f.close()
+f =open(‘C:\diff_dealer\diff.txt’, ‘w’)
+f.writelines(diff)
+f.close()
+print diff
+````
+  Python文件操作的面试题
+1. 如何用Python删除一个文件？
+使用os.remove(filename)或者os.unlink(filename);
+2. Python如何copy一个文件？
+shutil模块有一个copyfile函数可以实现文件拷贝
+1：Python如何实现单例模式？  
+Python有两种方式可以实现单例模式，下面两个例子使用了不同的方式实现单例模式：
+1.
+class Singleton(type):
+def __init__(cls, name, bases, dict):
+super(Singleton, cls).__init__(name, bases, dict)
+cls.instance = None
+def __call__(cls, *args, **kw):
+if cls.instance is None:
+cls.instance = super(Singleton, cls).__call__(*args, **kw)
+return cls.instance
+class MyClass(object):
+__metaclass__ = Singleton
+print MyClass()
+print MyClass()
+2. 使用decorator来实现单例模式
+def singleton(cls):
+instances = {}
+def getinstance():
+if cls not in instances:
+instances[cls] = cls()
+return instances[cls]
+return getinstance
+@singleton
+class MyClass:
+介绍一下Python下range()函数的用法？
+如果需要迭代一个数字序列的话，可以使用range()函数，range()函数可以生成等差级数。
+如例：
+for i in range(5)
+print(i)
+这段代码将输出0, 1, 2, 3, 4五个数字
+range(10)会产生10个值， 也可以让range()从另外一个数字开始，或者定义一个不同的增量，甚至是负数增量
+range(5, 10)从5到9的五个数字
+range(0, 10, 3) 增量为三， 包括0,3,6,9四个数字
+range(-10, -100, -30) 增量为-30， 包括-10, -40, -70
+可以一起使用range()和len()来迭代一个索引序列
+例如：
+a = ['Nina', 'Jim', 'Rainman', 'Hello']
+for i in range(len(a)):
+    print(i, a[i])
+
+Python中的sort()方法用于数组排序，本文以实例形式对此加以详细说明：
+一、基本形式
+列表有自己的sort方法，其对列表进行原址排序，既然是原址排序，那显然元组不可能拥有这种方法，因为元组是不可修改的。
+?
+1
+2
+3	x = [4, 6, 2, 1, 7, 9]
+x.sort()
+print x # [1, 2, 4, 6, 7, 9]
+如果需要一个排序好的副本，同时保持原有列表不变，怎么实现呢
+?
+1
+2
+3
+4
+5	x =[4, 6, 2, 1, 7, 9]
+y = x[ : ]
+y.sort()
+print y #[1, 2, 4, 6, 7, 9]
+print x #[4, 6, 2, 1, 7, 9]
+注意：y = x[:] 通过分片操作将列表x的元素全部拷贝给y，如果简单的把x赋值给y：y = x，y和x还是指向同一个列表，并没有产生新的副本。
+另一种获取已排序的列表副本的方法是使用sorted函数：
+?
+1
+2
+3
+4	x =[4, 6, 2, 1, 7, 9]
+y = sorted(x)
+print y #[1, 2, 4, 6, 7, 9]
+print x #[4, 6, 2, 1, 7, 9]
+sorted返回一个有序的副本，并且类型总是列表，如下：
+?
+1	print sorted('Python') #['P', 'h', 'n', 'o', 't', 'y']
+二、自定义比较函数
+可以定义自己的比较函数，然后通过参数传递给sort方法：
+
+	def comp(x, y):  
+	if x < y:
+        return 1
+    elif x > y:
+        return -1
+    else:
+    return 0
+ 
+nums = [3, 2, 8 ,0 , 1]
+nums.sort(comp)
+print nums # 降序排序[8, 3, 2, 1, 0]
+nums.sort(cmp) # 调用内建函数cmp ，升序排序
+print nums # 降序排序[0, 1, 2, 3, 8]
+三、可选参数
+sort方法还有两个可选参数：key和reverse
+
+1、key在使用时必须提供一个排序过程总调用的函数：
+x = ['mmm', 'mm', 'mm', 'm' ]
+x.sort(key = len)
+print x # ['m', 'mm', 'mm', 'mmm']
+2、reverse实现降序排序，需要提供一个布尔值：
+y = [3, 2, 8 ,0 , 1]
+y.sort(reverse = True)
+print y #[8, 3, 2, 1, 0]
+
+有时候，为了需求，需要统计两个 list 之间的交集，并集，差集。查询了一些资料，现在总结在下面:
+1. 获取两个list 的交集
+
+1.	#方法一:
+
+2.	a=[2,3,4,5]
+3.	b=[2,5,8]
+4.	tmp = [val for val in a if val in b]
+5.	print tmp
+6.	#[2, 5]
+7.	
+8.	#方法二
+9.	print list(set(a).intersection(set(b)))
+
+2. 获取两个list 的并集
+
+1.	print list(set(a).union(set(b)))
+
+3. 获取两个 list 的差集
+
+1.	print list(set(b).difference(set(a))) # b中有而a中没有的
+
+
+1. 在判断object是否是class的instances时，type和isinstance函数的区别？
+type(obj) => <type 'instance'>
+type(cls) => <type 'classobj'>
+由上可知，所有obj type后统一为 instance type； 而cls type后统一为classobj type
+isinstance(obj,class)，如果object是class的instance，返回True。
+
+2. 通过重写内建函数，实现文件open之前检查文件格式？
+[html] view plaincopyprint?
+1.	<span style="font-size:14px;">#! /usr/bin/env python  
+2.	# -*- coding: utf-8 -*-  
+3.	# vim: tabstop=4 shiftwidth=4 softtabstop=4  
+4.	  
+5.	def open(filename,mode):  
+6.	    import __builtin__  
+7.	      
+8.	    file = __builtin__.open(filename,mode)  
+9.	      
+10.	    if file.read(5) not in("GIF87", "GIF89"):   
+11.	        raise IOError, "not aGIF file"  
+12.	    file.seek(0)   
+13.	    return file  
+14.	      
+15.	fp = open("sample/test.gif","r")  
+16.	print len(fp.read()), "bytes"</span>  
+
+
+3. 重新实现str.strip()，注意不能使用string.*strip()
+[html] view plaincopyprint?
+1.	<span style="font-size:14px;">#! /usr/bin/env python  
+2.	# -*- coding: utf-8 -*-  
+3.	# vim: tabstop=4 shiftwidth=4 softtabstop=4  
+4.	  
+5.	  
+6.	# TODO rstrip  
+7.	def rightStr(string,split=' '):  
+8.	    endind = string.rfind(split)  
+9.	    res = string  
+10.	    while endind != -1 and endind == len(res)-1:  
+11.	        res = res[:endind]  
+12.	        endind = res.rfind(split)  
+13.	      
+14.	    return res  
+15.	  
+16.	  
+17.	# TODO lstrip  
+18.	def leftStr(string,split=' '):  
+19.	    startind = string.find(split)  
+20.	    res = string  
+21.	    while startind != -1 and startind == 0:  
+22.	        res = res[startind+1:]  
+23.	        startind=res.find(split)  
+24.	          
+25.	    return res  
+26.	  
+27.	def main():  
+28.	      
+29.	    word='aa    asdf  aa  '  
+30.	    stripstr=' '  
+31.	      
+32.	    lenth = len(word)  
+33.	    res=word  
+34.	    # leftstrip  
+35.	    if word[0] == stripstr:  
+36.	        res=leftStr(res)  
+37.	      
+38.	    # rightstrip  
+39.	    if word[len(word)-1] == stripstr:  
+40.	        res=rightStr(res)  
+41.	      
+42.	    print res  
+43.	  
+44.	if __name__ == "__main__":  
+45.	    main()  
+46.	    </span>  
+
+
+4. 说明os,sys模块不同，并列举常用的模块方法？
+官方解释：
+os： This module provides a portable way of using operating system dependent functionality. 
+翻译：提供一种方便的使用操作系统函数的方法。
+sys：This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+翻译：提供访问由解释器使用或维护的变量和在与解释器交互使用到的函数。
+os 常用方法
+[html] view plaincopyprint?
+1.	os.remove()删除文件  
+2.	os.rename()重命名文件  
+3.	os.walk()生成目录树下的所有文件名  
+4.	os.chdir()改变目录  
+5.	os.mkdir/makedirs创建目录/多层目录  
+6.	os.rmdir/removedirs删除目录/多层目录  
+7.	os.listdir()列出指定目录的文件  
+8.	os.getcwd()取得当前工作目录  
+9.	os.chmod()改变目录权限  
+10.	os.path.basename()去掉目录路径，返回文件名  
+11.	os.path.dirname()去掉文件名，返回目录路径  
+12.	os.path.join()将分离的各部分组合成一个路径名  
+13.	os.path.split()返回（dirname(),basename())元组  
+14.	os.path.splitext()(返回filename,extension)元组  
+15.	os.path.getatime\ctime\mtime分别返回最近访问、创建、修改时间  
+16.	os.path.getsize()返回文件大小  
+17.	os.path.exists()是否存在  
+18.	os.path.isabs()是否为绝对路径  
+19.	os.path.isdir()是否为目录  
+20.	os.path.isfile()是否为文件  
+
+sys 常用方法
+[html] view plaincopyprint?
+1.	sys.argv           命令行参数List，第一个元素是程序本身路径    
+2.	sys.modules.keys() 返回所有已经导入的模块列表    
+3.	sys.exc_info()     获取当前正在处理的异常类,exc_type、exc_value、exc_traceback当前处理的异常详细信息    
+4.	sys.exit(n)        退出程序，正常退出时exit(0)    
+5.	sys.hexversion     获取Python解释程序的版本值，16进制格式如：0x020403F0    
+6.	sys.version        获取Python解释程序的版本信息    
+7.	sys.maxint         最大的Int值    
+8.	sys.maxunicode     最大的Unicode值    
+9.	sys.modules        返回系统导入的模块字段，key是模块名，value是模块    
+10.	sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值    
+11.	sys.platform       返回操作系统平台名称    
+12.	sys.stdout         标准输出   
+13.	sys.stdin          标准输入   
+14.	sys.stderr         错误输出   
+15.	sys.exc_clear()    用来清除当前线程所出现的当前的或最近的错误信息   
+16.	sys.exec_prefix    返回平台独立的python文件安装的位置   
+17.	sys.byteorder      本地字节规则的指示器，big-endian平台的值是'big',little-endian平台的值是'little'   
+18.	sys.copyright      记录python版权相关的东西   
+19.	sys.api_version    解释器的C的API版本   
+20.	sys.version_info    
+
+5. deepcopy 和 copy的区别？
+copy 仅拷贝对象本身，而不拷贝对象中引用的其它对象。
+deepcopy 除拷贝对象本身，而且拷贝对象中引用的其它对象。
+例如：
+[html] view plaincopyprint?
+1.	#! /usr/bin/env python  
+2.	# -*- coding: utf-8 -*-  
+3.	# vim: tabstop=4 shiftwidth=4 softtabstop=4  
+4.	  
+5.	import copy  
+6.	  
+7.	al = [[1],[2],[3]]  
+8.	bl = copy.copy(al)  
+9.	cl = copy.deepcopy(al)  
+10.	  
+11.	print "before=>"  
+12.	print al  
+13.	print bl  
+14.	print cl  
+15.	  
+16.	al[0][0] = 0  
+17.	al[1] = None  
+18.	  
+19.	print "after=>"  
+20.	print al  
+21.	print bl  
+22.	print cl  
+
+6. os.path和sys.path的区别？
+os.path是module，包含了各种处理长文件名(路径名)的函数。
+例如：
+[html] view plaincopyprint?
+1.	#! /usr/bin/env python  
+2.	# -*- coding: utf-8 -*-  
+3.	# vim: tabstop=4 shiftwidth=4 softtabstop=4  
+4.	  
+5.	import os  
+6.	filename = "my/little/pony"  
+7.	print "using", os.name, "..."  
+8.	print "split", "=>", os.path.split(filename)  
+9.	print "splitext", "=>", os.path.splitext(filename)  
+10.	print "dirname", "=>", os.path.dirname(filename)  
+11.	print "basename", "=>", os.path.basename(filename)  
+
+
+sys.path是由目录名构成的列表，Python 从中查找扩展模块( Python 源模块, 编译模块,或者二进制扩展). 启动 Python 时,这个列表从根据内建规则,PYTHONPATH 环境变量的内容, 以及注册表( Windows 系统)等进行初始化. 
+
+7. re模块中match和search方法的不同？
+match() 函数只检查 RE 是否在字符串开始处匹配，而 search() 则是扫描整个字符串。
+
+8. 如何匹配<html><title></title></html>得到<html>
+[html] view plaincopyprint?
+1.	>>> import re  
+2.	>>> str = r'<html><title></title></html>'  
+3.	>>> p = re.compile(r'<.*?>')  
+4.	>>> print p.match(str).group(0)  
+
+9. 重新实现filter，map，reduce。
+[html] view plaincopyprint?
+1.	#! /usr/bin/env python  
+2.	# -*- coding: utf-8 -*-  
+3.	# vim: tabstop=4 shiftwidth=4 softtabstop=4  
+4.	  
+5.	def filter_impl(func, argvs):  
+6.	    res = []  
+7.	      
+8.	    for argv in argvs:  
+9.	        if func(argv):  
+10.	            res.append(argv)  
+11.	      
+12.	    return res  
+13.	  
+14.	  
+15.	# check filter impl  
+16.	print "filter ==>"  
+17.	print filter_impl(lambda x: x<4, range(1,10))  
+18.	print filter(lambda x: x<4, range(1,10))  
+19.	  
+20.	def map_impl(func, argvs):  
+21.	  
+22.	    res = []  
+23.	    for argv in argvs:  
+24.	        res.append(func(argv))  
+25.	          
+26.	    return res  
+27.	  
+28.	# check map impl  
+29.	  
+30.	print "map ==>"  
+31.	print map_impl(lambda x: x*10, range(1,5))  
+32.	print map(lambda x: x*10, range(1,5))  
+33.	  
+34.	def reduce_impl(func, argvs, startVal=None):  
+35.	      
+36.	    if startVal is not None:  
+37.	        argv1 = startVal  
+38.	    else:  
+39.	        argv1 = argvs[0]  
+40.	      
+41.	    for argv2 in argvs[1:]:  
+42.	        argv1 = func(argv1, argv2)  
+43.	      
+44.	    return argv1  
+45.	          
+46.	# check reduce impl  
+47.	print "reduce ==>"  
+48.	print reduce_impl(lambda x,y: x*y, range(1,4),20)  
+49.	print reduce(lambda x,y: x*y, range(1,4),20)  
+Result:
+filter ==>
+[1, 2, 3]
+[1, 2, 3]
+map ==>
+[10, 20, 30, 40]
+[10, 20, 30, 40]
+reduce ==>
+120
+120
+
+10. 解释生成器(generator)与函数的不同，并实现和使用简单generator？
+生成器和函数的主要区别在于函数 return a value，生成器 yield a value同时标记或记忆 point of the yield 以便于在下次调用时从标记点恢复执行。 yield 使函数转换成生成器，而生成器反过来又返回迭代器。
+[html] view plaincopyprint?
+1.	#! /usr/bin/env python  
+2.	# -*- coding: utf-8 -*-  
+3.	# vim: tabstop=4 shiftwidth=4 softtabstop=4  
+4.	  
+5.	def gem():  
+6.	    yield "first"  
+7.	    yield "second"  
+8.	    yield "third"  
+9.	      
+10.	for res in gem():  
+11.	    print res  
+
+
+11. 设计实现遍历目录与子目录，抓取.pyc文件?
+[html] view plaincopyprint?
+1.	#! /usr/bin/env python  
+2.	# -*- coding: utf-8 -*-  
+3.	# vim: tabstop=4 shiftwidth=4 softtabstop=4  
+4.	  
+5.	# 1. for-in dir/subdir to get the filesname  
+6.	# 2. splitext filename to filter  
+7.	  
+8.	import os  
+9.	  
+10.	def getFiles(dir, suffix):  
+11.	      
+12.	    res = []  
+13.	    for root,directory,files in os.walk(dir):  
+14.	        for filename in files:  
+15.	            name, suf = os.path.splitext(filename)  
+16.	            if suf == suffix:  
+17.	                res.append(os.path.join(root, filename))  
+18.	    return res  
+19.	  
+20.	for file in getFiles("./", '.py'):  
+21.	    print file  
+
